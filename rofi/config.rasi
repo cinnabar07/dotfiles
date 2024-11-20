@@ -1,0 +1,166 @@
+configuration{
+    modi: "run,drun,window";
+    lines: 5;
+    font: "JetBrainsMono Nerd Font 10";
+    show-icons: true;
+    icon-theme: "HighContrast";
+    terminal: "kitty";
+    drun-display-format: "{icon} {name}";
+    location: 0;
+    disable-history: false;
+    hide-scrollbar: true;
+    display-drun: "   Apps ";
+    display-run: "   Run ";
+    display-window: " 﩯  window";
+    display-Network: " 󰤨  Network";
+    sidebar-mode: true;
+}
+
+* {
+  background : #1e1e2e;
+  foreground: #d9e0ee;
+	rosewater: #F5E0DC; 
+	flamingo: #F2CDCD; 
+	mauve: #DDB6F2; 
+	pink: #F5C2E7; 
+	red: #F28FAD; 
+	maroon: #E8A2AF;
+	peach: #F8BD96; 
+	yellow: #FAE3B0;
+	green: #ABE9B3;
+	blue: #96CDFB;
+	sky: #89DCEB;
+	teal: #B5E8E0; 
+	lavender: #C9CBFF; 
+	white: #D9E0EE; 
+	gray2: #C3BAC6; 
+	gray1: #988BA2; 
+	gray0: #6E6C7E; 
+	black4: #575268; 
+	black3: #302D41; 
+	black2: #1E1E2E; 
+	black1: #1A1826; 
+	black0: #161320; 
+}
+
+
+
+
+window {
+    height: 360px;
+    border: 2px;
+    border-color: @lavender;
+    background-color: @black2; /* previous: black2 */
+    /* background-image: url("/home/kannaaa3/.config/rofi/bg.png"); */
+    border-radius : 10px;
+}
+
+mainbox {
+    /* background-color: @black2; */
+    padding : 10px;
+}
+
+inputbar {
+    children: [prompt,entry];
+    background-color: @black2;
+    border-radius: 5px;
+    padding: 2px;
+}
+
+prompt {
+    background-color: @blue;
+    padding: 6px;
+    text-color: @black2;
+    border-radius: 3px;
+    margin: 20px 0px 0px 20px;
+}
+
+textbox-prompt-colon {
+    expand: false;
+    str: ":";
+}
+
+entry {
+    padding: 6px;
+    margin: 20px 0px 0px 10px;
+    text-color: @lavender;
+    /* background-color: @black2; */
+}
+
+listview {
+    border: 0px 0px 0px;
+    padding: 6px 0px 0px;
+    margin: 10px 0px 0px 20px;
+    columns: 3;
+    /* background-color: @black2; */
+}
+
+element {
+    /* border:       1; */
+    /* border-color : @lavender; */
+    padding:      10px; 
+}
+element normal.normal {
+    background-color: @background;
+    text-color:       @lavender;
+}
+element normal.urgent {
+    background-color: @red;
+    text-color:       @lavender;
+}
+element normal.active {
+    background-color: @green;
+    text-color:       @background;
+}
+element selected.normal {
+    background-color: @blue;
+    border-radius:    5px;
+    text-color:       @background;
+}
+element selected.urgent {
+    background-color: @red;
+    text-color:       @background;
+}
+element selected.active {
+    background-color: @pink;
+    text-color:       @background;
+}
+element alternate.normal {
+    background-color: @background;
+    text-color:       @lavender;
+}
+element alternate.urgent {
+    background-color: @pink;
+    text-color:       @background;
+}
+element alternate.active {
+    background-color: @green;
+    text-color:       @background;
+}
+element-text {
+    cursor:           inherit;
+    highlight:        inherit;
+    text-color:       inherit;
+}
+element-icon {
+    size:             25;
+    cursor:           inherit;
+    text-color:       inherit;
+}
+
+mode-switcher {
+    spacing: 0;
+  }
+
+button {
+    padding: 10px;
+    background-color: @black3;
+    text-color: @gray0;
+    vertical-align: 0.5; 
+    horizontal-align: 0.5;
+}
+
+button selected {
+  background-color: @black2;
+  text-color: @blue;
+}

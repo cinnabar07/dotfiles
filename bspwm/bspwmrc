@@ -1,0 +1,81 @@
+#! /bin/sh
+
+# if [ -x $HOME/.config/bspwm/scripts/dual_monitor ];then
+#     dual_monitor
+# fi
+
+# sleep 10 && $HOME/.config/bspwm/scripts/bspfloat floating 5 &> $HOME/.log.bspfloat.txt &
+pgrep -x sxhkd > /dev/null || sxhkd &
+bspc monitor eDP -d 1 2 3 4 5 6 7 8 9 0
+# bspc monitor HDMI-0 -d 11 12
+
+if [[ $(xrandr -q | grep 'HDMI-1-0 connected') ]]; then
+  xrandr --output HDMI-1-0 --same-as  eDP
+  # bspc monitor HDMI-0-1 -d 1 
+  # xrandr --output None-1 --primary --mode 1920x1080 --rotate normal --output HDMI-0 --mode 3840x2160 --rotate normal --right-of None-1 
+fi
+
+############Window Settings ####################
+bspc config border_width         2
+bspc config window_gap           3
+bspc config focus_follows_pointer	true
+bspc config split_ratio          0.50
+bspc config borderless_monocle   true
+bspc config gapless_monocle      true
+bspc config top_padding 	 0
+#45
+
+########## Border Colors #################
+bspc config focused_border_color "#f657b8"
+bspc config normal_border_color  "#737373"
+
+######### Program settings ################
+# bspc rule -a TelegramDesktop desktop='^9'
+#bspc rule -a Firefox desktop='^1'
+bspc rule -a Zathura state=tiled
+# bspc rule -a ghidra state=floating
+# bspc rule -a virtualboxwm state=floating
+# bspc rule -a virtualbox state=floating
+bspc rule -a discord desktop='^10' 
+# bspc rule -a zoom state=floating center=on follow=on desktop='^8'
+# bspc rule -a "zoom " state=floating center=on follow=on desktop='^8'
+# bspc rule -a "Zoom Meeting" state=floating center=on follow=on desktop='^8'
+# bspc rule -a zoom state=floating center=on follow=on desktop='^8'
+# bspc rule -a PacketTracer state=floating
+bspc rule -a Nmtui state=floating
+bspc rule -a Nitrogen state=floating follow=on
+
+# bspc config border_radius 20
+
+dunst & 
+
+######### Other Settings ################
+xsetroot -cursor_name left_ptr &
+# backlight_control 0
+xinput set-prop 12 309 1
+xset r rate 200 40
+
+setxkbmap -option caps:swapescape &
+# xss-lock -n /usr/lib/xsecurelock/dimmer -l -- xsecurelock
+
+# eww daemon &
+# bash $HOME/.config/bspwm/scripts/fix-plank
+# plank &
+
+################# Picom ################
+# picom --config ~/.config/picom/picom.conf --experimental-backends --backend glx --xrender-sync-fence &
+
+#nitrogen --restore &
+nitrogen --set-zoom-fill ~/Pictures/Background/Sakura.png
+# nitrogen --set-zoom-fill ~/CTF/forensics/JPG.png
+
+polybar -c ~/.git/.config/polybar/config.ini main
+# eww daemon &
+# polybar --config=~/.config/polybar/plb.ini main # HDMI-0
+# ~/.config/polybar/polybar_autohide/polybar_autohide &
+
+# premid &
+
+####### INTELIJ IDEA, Ghidra
+export _JAVA_AWT_WM_NONREPARENTING=1
+~/.config/bspwm/java_nonreparenting_wm_hack.sh

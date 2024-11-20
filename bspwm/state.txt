@@ -1,0 +1,10 @@
+hidden - Is hidden and doesn’t occupy any tiling space.
+sticky - Stays in the focused desktop of its monitor.
+private - Tries to keep the same tiling position/size.
+locked - Ignores the node --close message.
+marked - Is marked (useful for deferred actions). A marked node becomes unmarked after being sent on a preselected node.
+center - Center window if state=floating.
+follow - Change to monitor/desktop of window.
+manage - Window is managed. An unmanaged window is not part of the tree.
+focus - Focus the window.
+border - Visibility of the window border.
