@@ -1,25 +1,24 @@
-sudo add-apt-repository ppa:greymd/tmux-xpanes
-sudo apt-get update
 sudo apt install software-properties-common
 
-
-# Workflow
-sudo apt install -y zsh git xclip \
+# Workflow.
+# TODO: minimal self-made pomodoro on polybar
+sudo apt install -y zsh git fzf \
     p7zip-full \
-    gnome-shell-pomodoro \
-    python2 python3-pip\
+    python3-pip\
     libc++-dev libc++abi-dev gcc-11-plugin-dev \
     autoconf \
-    nodejs npm sass \
     btop \
     valgrind gdbserver \
-    ninja automake autoconf \
+    ninja-build automake autoconf \
     checksec
 
+# Rust
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 # ccache
 sudo apt install -y ccache
 sudo /usr/sbin/update-ccache-symlinks
-echo 'export PATH="/usr/lib/ccache:$PATH"' | tee -a ~/.bashrc
+# NOTE: No need for my backup .zshrc 
+# echo 'export PATH="/usr/lib/ccache:$PATH"' | tee -a ~/.bashrc
 
 # Pwning
 # openssl, liblzma, pkg-config are required
@@ -48,22 +47,23 @@ sudo apt-get update
 
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-sudo groupadd docker
+# sudo groupadd docker
 sudo usermod -aG docker $USER
 newgrp docker
 
 sudo systemctl enable docker.service
 sudo systemctl enable containerd.service
 
+# change docker data-root
+sudo cp ./docker/daemon.json /etc/docker/
+
+# --------------------------------------------------------
 
 # Less priority
-
 sudo snap install obsidian --classic
-sudo apt install -y i3 polybar nitrogen dunst rofi cargo tmux xclip tree yt-dlp
+sudo apt install -y i3 polybar feh dunst rofi tmux xclip ripgrep tree
 sudo apt update
-sudo apt install tmux-xpanes
 
-cargo install starship --locked
 
+curl -sS https://starship.rs/install.sh | sh
 chsh -s $(which zsh)
-
